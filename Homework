@@ -1,0 +1,20 @@
+def problem1():
+    ###
+    ### YOUR CODE HERE
+    ##inputing the columns
+    cols = int(input("Enter the number of columns: "))
+    rows = int(input("Enter the number of rows: "))
+    
+    ##starting the first if statement for invalid row number
+    if cols < 1 or rows < 1:
+        print("Error: Both column and row numbers must be greater than or equal to 1.")
+        return
+
+    if cols <= 4:
+        for i in range(rows):
+            print('*' * cols)
+    else:
+        print('*' * cols)
+        for i in range(rows - 2):
+            print('**' + ' ' * (cols - rows) + '**')
+        print('*' * cols)
