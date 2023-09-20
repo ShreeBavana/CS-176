@@ -14,7 +14,17 @@ def problem1():
         for i in range(rows):
             print('*' * cols)
     else:
-        print('*' * cols)
-        for i in range(rows - 2):
-            print('**' + ' ' * (cols - rows) + '**')
-        print('*' * cols)
+        print("*"*cols)
+    
+    # Loop through number of columns
+        for i in range(rows-2):  
+            for j in range(cols):
+        # Printing Pattern
+                if((j==0) or j==1 or (j==cols-2) or (j==cols-1)):
+                    print('*',end='')
+                else:
+                    print(' ',end='')
+
+            print()
+        print("*"*cols)
+    ###
