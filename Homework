@@ -28,3 +28,96 @@ def problem1():
             print()
         print("*"*cols)
     ###
+
+
+
+def problem2():
+    ###
+    ### YOUR CODE HERE
+    ##inputing all the variables required
+    num = int(input("Enter integer in range [-99999, 99999] _> "))
+    ##making lists of the texts of numbers
+    ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    teens = ["eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+    tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    ##initializing the result
+    result = ""
+    
+    ##if statement to print out the invalid number
+    if not (-99999 <= num <= 99999):
+        print("Input out of range. Please try again.")
+        return
+    ##if statement for a negative number
+    if num < 0:
+        result = "negative "
+        num = abs(num)
+    ##if statement for a zero value input
+    if num == 0:
+        result += "zero"
+    ##checking if the number has thousands
+    else:
+        if num // 1000 > 0:
+            result += ones[num // 1000] + " thousand "
+            num %= 1000
+        ##checking is the number has hundredth vale
+        if num // 100 > 0:
+            result += ones[num // 100] + " hundred "
+            num %= 100
+            if num > 0:
+                result += "and "
+        ##checking if the number is one of the "teens"
+        if num >= 11 and num <= 19:
+            result += teens[num - 11] + " "
+            num = 0  
+        ##checking if the number is anywhere between 1 and 9
+        elif num >= 1 and num <= 9:
+            result += ones[num] + " "
+            num = 0  
+        ## checking if the number is between 21 and 99 or in the tenths
+        elif num >= 21 and num <= 99:
+            result += tens[num // 10] + " "
+            num %= 10
+        ## checking if the number is 10
+        if num == 10:
+            result += "ten"
+
+        if num > 0 and num <= 9:
+            result += ones[num] + " "
+
+    print(f"Text equivalence: {result.strip()}")
+###
+
+
+
+
+def problem3():
+    ###
+    ### YOUR CODE HERE
+    # Define a list of month names
+    month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+    # Initialize a list to store income for each month
+    income_list = []
+
+    # Get income for each month
+    for month in month_names:
+        income = float(input(f"Enter the income for {month}: "))
+        income_list.append(income)
+
+    # Calculate total income
+    total_income = sum(income_list)
+
+    # Calculate average income for each quarter
+    quarterly_incomes = [sum(income_list[i:i+3]) for i in range(0, len(income_list), 3)]
+
+    # Find highest and lowest income months
+    highest_month = month_names[income_list.index(max(income_list))]
+    lowest_month = month_names[income_list.index(min(income_list))]
+
+    # Print results with appropriate formatting
+    print(f"Total income: {total_income:.2f}")
+    for i, quarter_income in enumerate(quarterly_incomes, start=1):
+        print(f"Average income for Q{i}: {quarter_income / 3:.2f}")
+    print(f"Highest income: {highest_month}")
+    print(f"Lowest income: {lowest_month}")
+    ###
